@@ -1,21 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-剪贴板文本清理守护进程
-
-在后台运行，自动监听剪贴板：
-    你复制任何文字 -> 脚本自动删除空格/换行/段落标记 -> 写回剪贴板 -> 直接 Ctrl+V 粘贴即可
-
-用法：
-    python 清理守护.py                 # 默认规则：删空格 + 换行 + 段落标记
-    python 清理守护.py --space         # 保留空格
-    python 清理守护.py --keep-newline  # 保留换行
-    python 清理守护.py --keep-para     # 保留段落标记
-    python 清理守护.py --collapse      # 不删换行，只把连续空行合并为一个
-
-停止：在脚本窗口按 Ctrl+C，或直接关掉窗口。
-"""
-
-import ctypes
+# -*- coding: utf-8 -*-import ctypes
 import sys
 import time
 from ctypes import wintypes
@@ -37,7 +20,7 @@ user32.GetClipboardData.argtypes = [wintypes.UINT]
 user32.SetClipboardData.restype = wintypes.HANDLE
 user32.SetClipboardData.argtypes = [wintypes.UINT, wintypes.HANDLE]
 
-# ============ 清理规则（和网页版一致） ============
+
 PARA_MARKS = "¶·■▶●◆▲►‣▪"
 
 
@@ -61,7 +44,7 @@ def clean(text: str, space=True, newline=True, para=True, tab=True, trim=True, c
     return text
 
 
-# ============ 剪贴板读写（ctypes 调 Windows API） ============
+
 def get_clipboard():
     """读取剪贴板文字，非文字内容返回 None"""
     if not user32.OpenClipboard(None):

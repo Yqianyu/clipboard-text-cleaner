@@ -59,8 +59,8 @@ python clipboard-cleaner.py --keep-newline
 
 ## 💻 环境要求
 
-- Windows 10 / 11（依赖 Win32 剪贴板 API）
-- Python 3.6+（无需 pip 安装任何东西）
+- Windows 10 / 11
+- Python 3.6+
 
 ## ⚠️ 注意事项
 
